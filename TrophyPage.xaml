@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.TrophyPage"
+             BackgroundColor="#E9ECF1">
+    <Grid RowDefinitions="*, Auto" ColumnDefinitions="*, Auto, *">
+
+        <!-- Scrollbarer Hauptinhalt -->
+        <ScrollView Grid.Row="0" Grid.ColumnSpan="3">
+            <VerticalStackLayout Padding="20, 0,20,0">
+                <!-- Settings Button innerhalb der ScrollView -->
+                <ImageButton Source="settings.png"
+             HorizontalOptions="End"
+             VerticalOptions="Start"
+             Margin="10"
+             HeightRequest="100"
+             WidthRequest="100"
+             BackgroundColor="Transparent"
+             Clicked="OnSettingsPageClicked"/>
+                <!-- Achievement Section -->
+                <StackLayout Padding="0, -50,0,0">
+                    <!-- Streak Count -->
+                    <Border StrokeShape="RoundRectangle 90" WidthRequest="150" HeightRequest="150" BackgroundColor="LightBlue" Stroke="#707070" HorizontalOptions="Center">
+                        <Label x:Name="lblStreak" FontSize="100" FontAttributes="Bold" TextColor="#707070" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </Border>
+                    <Label Text="DAY STREAK" FontSize="40" TextColor="#707070" HorizontalOptions="Center" />
+
+                    <!-- HorizontalStackLayout to align Left and Right sections -->
+                    <Grid ColumnDefinitions="*, auto" HorizontalOptions="FillAndExpand">
+
+                        <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="95">
+                            <!-- Left Side: Level Display -->
+                            <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start" Padding="20,20,0,0" Grid.Column="0">
+                                <Border BackgroundColor="#44B5E1" StrokeShape="RoundRectangle 0" Rotation="45" Padding="5" WidthRequest="60" HeightRequest="60" HorizontalOptions="Start">
+                                    <Label Text="9" FontSize="30" Rotation="-45" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Border>
+                                <Label Text="LEVEL" FontSize="20" TextColor="#707070" HorizontalOptions="Center" Margin="-10,10,0,0" />
+                            </VerticalStackLayout>
+
+                            <!-- Right Side: Waterdrop Points -->
+                            <VerticalStackLayout HorizontalOptions="End" VerticalOptions="Start" Padding="0,20,0,0" Grid.Column="1">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Image Source="wassertropfen.png" WidthRequest="60" HeightRequest="60" />
+                                    <Label Text="912" FontSize="45" FontAttributes="Bold" TextColor="#707070" VerticalOptions="Center" />
+                                </StackLayout>
+                                <Label Text="Waterdrop Points" FontSize="20" TextColor="#707070" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Grid>
+
+                    <!-- Leaderboard -->
+                    <Label Text="LEADERBOARD" FontSize="30" FontAttributes="Bold" TextColor="#707070" HorizontalOptions="Center" Margin="10,20" />
+
+                    <!-- Header for Table -->
+                    <Grid Padding="5" ColumnDefinitions="*, *, *">
+                        <Label Text="Level" FontSize="25" FontAttributes="Bold" TextColor="#707070" HorizontalOptions="Center" />
+                        <Label Text="Name" FontSize="25" FontAttributes="Bold" TextColor="#707070" Grid.Column="1" HorizontalOptions="Center" />
+                        <Label Text="Points" FontSize="25" FontAttributes="Bold" TextColor="#707070" Grid.Column="2" HorizontalOptions="Center" />
+                    </Grid>
+                    <BoxView HeightRequest="1" Color="#707070" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+
+                    <!-- Leaderboard Table -->
+                    <CollectionView ItemsSource="{Binding Leaderboard}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Grid Padding="5" ColumnDefinitions="*, *, *">
+                                        <Label Text="{Binding Level}" FontSize="20" TextColor="#707070" HorizontalOptions="Center" />
+                                        <Label Text="{Binding Name}" FontSize="20" TextColor="#707070" Grid.Column="1" HorizontalOptions="Center" />
+                                        <Label Text="{Binding Points}" FontSize="20" TextColor="#707070" Grid.Column="2" HorizontalOptions="Center" />
+                                    </Grid>
+                                    <BoxView HeightRequest="1" Color="#707070" HorizontalOptions="FillAndExpand" VerticalOptions="Start" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </StackLayout>
+
+                
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Fixierte Fußzeile (Navigation) -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+            <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+            <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+            <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+            <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+        </Grid>
+
+    </Grid>
+</ContentPage>

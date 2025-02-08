@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.Rechner"
+             Title="Rechner"
+             BackgroundColor="#E9ECF1">
+
+    <!-- Main Grid layout -->
+    <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, *" Margin="0">
+
+        <!-- Wrapper-Grid für ScrollView -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <ScrollView>
+                <StackLayout >
+                    <!-- Einstellungen-Button oben rechts -->
+                    <ImageButton Source="settings.png" 
+                                 HorizontalOptions="End" 
+                                 VerticalOptions="Start" 
+                                 Margin="10" 
+                                 HeightRequest="100" 
+                                 WidthRequest="100" 
+                                 BackgroundColor="Transparent" 
+                                 Clicked="OnSettingsPageClicked"/>
+
+                    
+
+                    <StackLayout Padding="20">
+                        <!-- Title -->
+                        <Label Text="Wasserbedarfs Rechner" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Start" 
+                       FontSize="50" 
+                       TextColor="#ff4f6273" 
+                       Margin="-0, -20, 0, 0" 
+                       Padding="0,0,0,0"/>         
+                        
+                        <!-- Gender selection -->
+                        <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 0, 0, 0" Padding="0,30,0,0">
+                            <Label Text="Geschlecht" FontSize="20" TextColor="#ff707070"/>
+                            <HorizontalStackLayout Spacing="20">
+                                <Button x:Name="BtnMan" Text="Männlich" CommandParameter="1" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnGenderClicked"/>
+                                <Button x:Name="BtnWom" Text="Weiblich" CommandParameter="2"  BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnGenderClicked"/>
+                                <Button x:Name="BtnDiv" Text="Divers" CommandParameter="3" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnGenderClicked"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+
+                        <!-- Alter section -->
+                        <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 15, 0, 0">
+                            <Label Text="Alter" FontSize="20" TextColor="#ff707070"/>
+                            <Border Stroke="#ff707070" BackgroundColor="Transparent" StrokeShape="RoundRectangle 5,5,5,5" Padding="0">
+                                <Entry Placeholder="Wie alt bist du?" TextColor="#ff707070" BackgroundColor="#ffffff" x:Name="TbxAlter" Keyboard="Numeric" Completed="OnEntryCompleted"/>
+                            </Border>
+                        </StackLayout>
+
+                        <!-- PAL selection -->
+                        <ScrollView Orientation="Horizontal" HeightRequest="120">
+                            <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 0, 0, 0" Padding="0,30,0,0" HorizontalOptions="FillAndExpand">
+                                <Label Text="Physical Activity Level - Wie viel bewegst du dich im Alltag?" FontSize="20" TextColor="#ff707070"/>
+                                <HorizontalStackLayout Spacing="10">
+                                    <Button x:Name="BtnPALK" CommandParameter="1" Text="Kaum" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnPalClicked"/>
+                                    <Button x:Name="BtnPalE" CommandParameter="2" Text="Etwas" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnPalClicked"/>
+                                    <Button x:Name="BtnPalM" CommandParameter="3" Text="Mittelmäßig" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnPalClicked"/>
+                                    <Button x:Name="BtnPALV" CommandParameter="4" Text="Viel" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnPalClicked"/>
+                                    <Button x:Name="BtnPALSV" CommandParameter="5" Text="Sehr Viel" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnPalClicked"/>
+                                </HorizontalStackLayout>
+                            </StackLayout>
+                        </ScrollView>
+
+                        <!-- Schlaf section -->
+                        <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 15, 0, 0">
+                            <Label Text="Schlaf" FontSize="20" TextColor="#ff707070"/>
+                            <Border Stroke="#ff707070" BackgroundColor="Transparent" StrokeShape="RoundRectangle 5,5,5,5" Padding="0">
+                                <Entry Placeholder="Wie lange schläfst du im durchschnitt?" TextColor="#ff707070" BackgroundColor="#ffffff" x:Name="TbxSchlaf" Keyboard="Numeric" Completed="OnEntryCompleted"/>
+                            </Border>
+                        </StackLayout>
+
+                        <!-- Gewicht section -->
+                        <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 15, 0, 0">
+                            <Label Text="Gewicht" FontSize="20" TextColor="#ff707070"/>
+                            <Border Stroke="#ff707070" BackgroundColor="Transparent" StrokeShape="RoundRectangle 5,5,5,5" Padding="0">
+                                <Entry Placeholder="Wie viel wiegst du?" TextColor="#ff707070" BackgroundColor="#ffffff" x:Name="TbxGewicht" Keyboard="Numeric" Completed="OnEntryCompleted"/>
+                            </Border>
+                        </StackLayout>
+
+                        <!-- Athlet selection -->
+                        <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 0, 0, 0" Padding="0,30,0,0">
+                            <Label Text="Bist du ein Athlet oder ähnliches?" FontSize="20" TextColor="#ff707070"/>
+                            <HorizontalStackLayout Spacing="20">
+                                <Button x:Name="BtnAthJa" CommandParameter="1" Text="Ja" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnAthClicked"/>
+                                <Button x:Name="BtnAthNein" CommandParameter="2" Text="Nein" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" Clicked="OnAthClicked"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+
+                        <!-- Temperatur section -->
+                        <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 15, 0, 0">
+                            <Label Text="Temperatur" FontSize="20" TextColor="#ff707070"/>
+                            <Border Stroke="#ff707070" BackgroundColor="Transparent" StrokeShape="RoundRectangle 5,5,5,5" Padding="0">
+                                <Entry Placeholder="Durchschnittstemperatur bei dir?" TextColor="#ff707070" BackgroundColor="#ffffff" Keyboard="Numeric" x:Name="TbxTemp" Completed="OnEntryCompleted"/>
+                            </Border>
+                        </StackLayout>
+
+                        <!-- Action buttons at the bottom -->
+                        <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Margin="0, 50, 0, 0">
+                            <Button Text="Berechnen" BackgroundColor="#ff707070" TextColor="#ffffff" Clicked="OnRechnenClicked"/>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- Footer Navigation Bar always at the bottom -->
+        <Grid Grid.Row="2" ColumnSpan="2" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+            <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+            <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+            <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+            <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

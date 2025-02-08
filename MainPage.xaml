@@ -1,0 +1,136 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.MainPage"
+             BackgroundColor="#E9ECF1"
+             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar">
+
+    <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, *" Margin="0">
+
+        <!-- Settings Button -->
+        <ImageButton Source="settings.png"
+                     Grid.Row="0" Grid.Column="1"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     Margin="0"
+                     HeightRequest="100"
+                     WidthRequest="100"
+                     BackgroundColor="Transparent"
+                     Clicked="OnSettingsPageClicked"/>
+
+        <!-- Hauptinhalt, der sich über alle Spalten erstreckt -->
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Padding="20,-75,0,0" VerticalOptions="Start">
+            <!-- Überschrift -->
+            <Label Text="HEUTE"
+                   FontSize="50"
+                   TextColor="#4F6273"
+                   HorizontalOptions="Center" />
+
+            <!-- Fortschrittskreis -->
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                
+
+                <progressBar:SfCircularProgressBar x:Name="progressBar"
+                                                   Progress="20"
+                                                   ProgressFill="#9AAFC4"
+                                                   TrackFill="LightGray"
+                                                   TrackThickness="10"
+                                                   ProgressThickness="10"
+                                                   AnimationDuration="2000"
+                                                   WidthRequest="200"
+                                                   HeightRequest="200"
+                                                   BackgroundColor="Transparent">
+                    <!-- Wassertropfen im Kreis -->
+                    <ImageButton Source="wassertropfen.png"
+                           WidthRequest="100"
+                           HeightRequest="100"
+                           Clicked="OnDetailPageClicked"
+                            />
+                </progressBar:SfCircularProgressBar>
+                
+                                <AbsoluteLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    
+                </AbsoluteLayout>
+            </StackLayout>
+
+            <!-- Prozentanzeige -->
+            <Label x:Name="lbl_prozent"
+                   Text="74%"
+                   FontSize="40"
+                   TextColor="#4F6273"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Button x:Name="SollButton" Text="Wasserbedarf jetzt ausrechnen!" IsVisible="False" Clicked="OnRechnerClicked" WidthRequest="250"/>
+
+
+            <!-- Wasserstatistik mit Bruchstrich -->
+            <Grid HorizontalOptions="FillAndExpand" RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, *, *, *">
+                <!-- Linke Zahl (1.8) -->
+                <Label Text="1.8"
+                       x:Name="lbl_haben"
+                       FontSize="24"
+                       TextColor="#4F6273"
+                       FontAttributes="Bold"
+                       VerticalOptions="Start"
+                       Grid.Row="0" Grid.Column="0"
+                       Margin="30,50,0,0" />
+
+                <!-- Trennstrich -->
+                
+                <Image Source="slash"
+                    HeightRequest="150"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    />
+
+                <!-- Rechte Zahl (2.5L) -->
+                <Label Text="2.5"
+                       x:Name="lbl_soll"
+                       FontSize="24"
+                       TextColor="#4F6273"
+                       FontAttributes="Bold"
+                       VerticalOptions="End"
+                       HorizontalOptions="Start"
+                       Grid.Row="0" Grid.Column="1"
+                       Margin="0,0,0,40" />
+                
+                <!-- Glas (immer rechts ausgerichtet) -->
+                <Image Source="wasserglas.png"
+                       WidthRequest="150"
+                       HeightRequest="150"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       VerticalOptions="Start"
+                       HorizontalOptions="End"
+                       Margin="0,0,20,20" />
+
+                <!-- Hinzufügen-Button -->
+                <Button Text="250ml Hinzufügen"
+                        x:Name="CounterBtn"
+                        BackgroundColor="#4F6273"
+                        TextColor="White"
+                        CornerRadius="20"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+                        WidthRequest="150"
+                        HeightRequest="50"
+                        Margin="0,0,20,0"
+                        Clicked="OnCounterClicked" />
+            </Grid>
+
+        </StackLayout>
+
+        <!-- Fußzeile (Navigation) -->
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+            <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+            <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+            <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+            <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+        </Grid>
+
+    </Grid>
+</ContentPage>

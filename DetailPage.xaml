@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.DetailPage"
+             Title="DetailPage"
+             BackgroundColor="#E9ECF1"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             >
+
+    <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, *" Margin="0">
+
+        <!-- Wrapper-Grid für ScrollView -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <ScrollView>
+                <StackLayout Padding="0,0,0,0" VerticalOptions="Start">
+
+                    <!-- Settings Button innerhalb der ScrollView -->
+                    <ImageButton Source="settings.png"
+                             HorizontalOptions="End"
+                             VerticalOptions="Start"
+                             Margin="0,0,20,0"
+                             HeightRequest="100"
+                             WidthRequest="100"
+                             BackgroundColor="Transparent"
+                             Clicked="OnSettingsPageClicked"/>
+                    <StackLayout Padding="20,-20,20,20">
+                    <!-- Überschrift -->
+                    <Label Text="Analyse"
+                       FontSize="50"
+                       TextColor="#4F6273"
+                       HorizontalOptions="Center" 
+                           VerticalOptions="Start"
+                           />
+
+                    <!-- Deine Woche -->
+                    <chart:SfCartesianChart Title="Deine letze Woche" x:Name="Chart" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                        <chart:SfCartesianChart.XAxes>
+                            <chart:CategoryAxis>
+                                <chart:CategoryAxis.Title>
+                                    <chart:ChartAxisTitle Text="Tage"/>
+                                </chart:CategoryAxis.Title>
+                            </chart:CategoryAxis>
+                        </chart:SfCartesianChart.XAxes>
+                        <chart:SfCartesianChart.YAxes>
+                            <chart:NumericalAxis>
+                                <chart:NumericalAxis.Title>
+                                    <chart:ChartAxisTitle Text="Liter getrunken"/>
+                                </chart:NumericalAxis.Title>
+                            </chart:NumericalAxis>
+                        </chart:SfCartesianChart.YAxes>
+                            <chart:SplineAreaSeries ItemsSource="{Binding StreakDataCollection}"
+                                                XBindingPath="ChartDates"
+                                                YBindingPath="Consumption" />
+                    </chart:SfCartesianChart>
+
+                    <Label x:Name="lblEmpfehlung"
+                           HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+
+        <!-- Fußzeile (Navigation) -->
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+            <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+            <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+            <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+            <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

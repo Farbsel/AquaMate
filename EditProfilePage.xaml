@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.EditProfilePage"
+             Title="EditProfilePage"
+             BackgroundColor="#E5E5E5">
+
+   
+            <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, *">
+                <ScrollView Grid.ColumnSpan="2" Grid.Row="1">
+                    <VerticalStackLayout Padding="20" Grid.ColumnSpan="2">
+
+
+                            <!-- Settings-Knopf -->
+                            <ImageButton Source="settings.png"
+                                         HeightRequest="100"
+                                         WidthRequest="100"
+                                         BackgroundColor="Transparent"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="Start"
+                                         Clicked="OnSettingsPageClicked"/>
+                        
+                        <!-- Name -->
+                <Label Text="Name ändern" FontSize="18" FontAttributes="Bold"/>
+                <Entry Placeholder="Name" IsPassword="False" Keyboard="Default" x:Name="tbxName"></Entry>
+
+
+                <!-- E-Mail -->
+                <Label Text="E-Mail ändern" FontSize="18" FontAttributes="Bold"/>
+                <Entry Placeholder="beispiel@gmail.com" IsPassword="False" Keyboard="Default" x:Name="tbxEmail"></Entry>
+
+                <!-- Passwort -->
+                <Label Text="Passwort ändern" FontSize="18" FontAttributes="Bold"/>
+                <Entry Placeholder="Name" IsPassword="True" Keyboard="Default" x:Name="tbxPW" ></Entry>
+
+                <!-- Public -->
+                <StackLayout Orientation="Vertical" Spacing="10" Margin="0, 0, 0, 0" Padding="0,30,0,0">
+                    <Label Text="Willst du bei den Bestenlisten gesehen werden?" FontSize="20" TextColor="#ff707070"/>
+                    <HorizontalStackLayout Spacing="20">
+                        <Button x:Name="btnPublic" CommandParameter="1" Text="Ja" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1" />
+                        <Button x:Name="btnPrivat" CommandParameter="2" Text="Nein" BackgroundColor="#ffe9ecf1" TextColor="#ff707070" BorderColor="#ff707070" BorderWidth="1"/>
+                    </HorizontalStackLayout>
+                </StackLayout>
+
+                <Button Text="Speichern"
+                        Clicked="OnSpeichernClicked">
+                    
+                    
+                </Button>
+            </VerticalStackLayout>
+                </ScrollView>
+
+                <!-- Fußzeile (Navigation) -->
+                <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+                    <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+                    <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+                    <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+                    <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+                </Grid>
+            </Grid>
+        
+</ContentPage>

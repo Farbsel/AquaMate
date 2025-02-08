@@ -1,0 +1,98 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.ProfilePage"
+             BackgroundColor="#E5E5E5">
+
+        <Grid RowDefinitions="Auto, *, Auto" ColumnDefinitions="*, *">
+        <ScrollView Grid.ColumnSpan="2" Grid.Row="1">
+            <VerticalStackLayout Padding="20" Grid.ColumnSpan="2">
+
+
+                <HorizontalStackLayout HorizontalOptions="Fill" Padding="0" Spacing="10">
+                    <!-- Profilbild & Name -->
+                    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto">
+                        <Image Source="person.png" WidthRequest="100" HeightRequest="100"/>
+                        <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
+                            <Label Text="Name" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="username" FontSize="14" TextColor="Gray"/>
+                            <Button Text="Edit Profile" FontSize="12" HeightRequest="30" WidthRequest="100" Clicked="OnEditProfileClicked"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- Settings-Knopf -->
+                    <ImageButton Source="settings.png"
+                 HeightRequest="100"
+                 WidthRequest="100"
+                 BackgroundColor="Transparent"
+                 HorizontalOptions="End"
+                 VerticalOptions="Start"
+                 Clicked="OnSettingsPageClicked"/>
+                </HorizontalStackLayout>
+
+                <!-- Buttons -->
+                    <HorizontalStackLayout Spacing="40" HorizontalOptions="StartAndExpand" Padding="10">
+                        <Button Text="Add Friends" ImageSource="person.png" HeightRequest="60" />
+                        <Button Text="Share" ImageSource="share.png" HeightRequest="60"/>
+                    </HorizontalStackLayout>
+
+                <!-- Stats -->
+                <Grid ColumnDefinitions="*, *" RowDefinitions="Auto, Auto" Padding="10">
+                    <Border>
+                        <VerticalStackLayout>
+                            <Label Text="16" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="Day Streak" FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1">
+                        <VerticalStackLayout>
+                            <Label Text="1613" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="Total L" FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1">
+                        <VerticalStackLayout>
+                            <Label Text="#2123" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="Rank Worldwide" FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1">
+                        <VerticalStackLayout>
+                            <Label Text="45" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="Best Streak" FontSize="12"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- Achievements Section -->
+                <Grid ColumnDefinitions="*, Auto" Padding="10">
+                    <Label Text="Achievements" FontSize="16" FontAttributes="Bold"/>
+                    <Label Text="Show All" TextColor="Blue" Grid.Column="1"/>
+                </Grid>
+                <Border Stroke="Black" StrokeShape="RoundRectangle 10,10,10,10">
+                    <Grid ColumnDefinitions="*, *, *" Margin="10">
+                        <VerticalStackLayout Grid.Column="0">
+                        <Image Source="wassertropfen.png"  WidthRequest="120" HeightRequest="120"/>
+                            <Label Text="120 L - Du hast eine Dusche Getrunken" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1">
+                            <Image Source="wassertropfen.png"  WidthRequest="120" HeightRequest="120"/>
+                            <Label Text=" 180 L - Du hast eine Badewanne getrunken" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2">
+                            <Image Source="Pokal.png"  WidthRequest="120" HeightRequest="120"/>
+                            <Label Text="10 Tages Streak erreicht" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Fußzeile (Navigation) -->
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+                <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+                <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+                <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+                <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+            </Grid>
+        </Grid>
+</ContentPage>

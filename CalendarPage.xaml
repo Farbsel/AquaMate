@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AquaMate.CalendarPage"
+             Title="CalendarPage"
+             BackgroundColor="#E9ECF1"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar">
+
+
+    <Grid RowDefinitions="*, Auto" ColumnDefinitions="*, *" >
+
+        <!-- Settings Button oben rechts -->
+        <ImageButton Source="settings.png"
+                     Grid.Row="0" Grid.Column="1"
+                     HorizontalOptions="End"
+                     VerticalOptions="Start"
+                     Margin="0"
+                     HeightRequest="100"
+                     WidthRequest="100"
+                     BackgroundColor="Transparent"
+                     Clicked="OnSettingsPageClicked"/>
+
+        <!-- Hauptinhalt -->
+        <VerticalStackLayout Grid.Row="0" Margin="20" Grid.ColumnSpan="2">
+            <HorizontalStackLayout Margin="0,75,0,0">
+                <VerticalStackLayout VerticalOptions="Center" Margin="20">
+                    <Label FontSize="35" x:Name="lblStreak"/>
+                    <Label Text="day streak" FontSize="35"/>
+                </VerticalStackLayout>
+                <Image HeightRequest="200" WidthRequest="200" x:Name="ImgWasser"/>
+            </HorizontalStackLayout>
+
+            <BoxView HeightRequest="1" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
+            <calendar:SfCalendar 
+                x:Name="calendar" 
+                View="Month"
+                SelectionMode="Single"
+                NavigationDirection="Horizontal"
+                BackgroundColor="Transparent"
+                HeightRequest="250"
+                
+                >
+                <calendar:SfCalendar.MonthView>
+                    <calendar:CalendarMonthView FirstDayOfWeek="Monday"
+                                                NumberOfVisibleWeeks="3"
+                                                
+                                                />
+                    
+                </calendar:SfCalendar.MonthView>
+            </calendar:SfCalendar>
+        </VerticalStackLayout>
+
+        <!-- Fixierte Fußzeile (Navigation) -->
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*,*" BackgroundColor="White" HeightRequest="100">
+            <ImageButton Source="haus.png" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnHomePageClicked" />
+            <ImageButton Source="pokal.png" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnTrophyPageClicked" />
+            <ImageButton Source="kalender.png" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnCalendarPageClicked" />
+            <ImageButton Source="person.png" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Clicked="OnProfilePageClicked" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
